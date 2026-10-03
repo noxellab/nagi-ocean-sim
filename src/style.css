@@ -108,6 +108,15 @@ header {
   font-size: 26px;
   opacity: 0.8;
 }
+.github {
+  display: flex;
+  opacity: 0.8;
+}
+.github svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
 .hud {
   transition:
     opacity 0.35s,
