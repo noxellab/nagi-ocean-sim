@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0c242d" />
+    <title>NAGI — Ocean study</title>
+    <meta
+      name="description"
+      content="光と波を、リアルタイムに。Three.js ocean shader study."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f303b'/%3E%3Cpath d='M10 35Q21 18 32 35T54 35M10 45Q21 28 32 45T54 45' fill='none' stroke='%23c8e7dd' stroke-width='3'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <main
+      id="scene"
+      aria-label="インタラクティブな海。ドラッグで視点を移動"
+    ></main>
+    <header>
+      <a class="brand" href="./" aria-label="NAGI ホーム"
+        ><svg viewBox="0 0 40 24" fill="none">
+          <path d="M1 9Q10-3 20 9T39 9M1 18Q10 6 20 18T39 18" /></svg
+        ><span>NAGI</span><small>OCEAN STUDY</small></a
+      >
+      <div class="top-actions">
+        <span class="live"><i></i> REALTIME</span
+        ><button
+          id="hide"
+          title="操作パネルの表示切替 (H)"
+          aria-label="操作パネルを隠す"
+        >
+          ◫
+        </button>
+      </div>
+    </header>
+    <div class="intro hud">
+      <div class="eyebrow">A STUDY IN LIGHT & WATER</div>
+      <h1>ただ、波を眺める。</h1>
+      <p>ドラッグで見渡す<span> · </span>スクロール / ピンチで近づく</p>
+    </div>
+    <section class="panel hud" aria-label="海の設定">
+      <div class="panel-head">
+        <span>海の表情</span><span class="index">01 — 03</span>
+      </div>
+      <div class="presets" role="group" aria-label="情景">
+        <button data-preset="golden" aria-pressed="false">
+          <i class="golden"></i>夕凪</button
+        ><button data-preset="azure" class="active" aria-pressed="true">
+          <i class="azure"></i>青の時間</button
+        ><button data-preset="storm" aria-pressed="false">
+          <i class="storm"></i>雨のあと
+        </button>
+      </div>
+      <div class="sliders">
+        <label for="wave"
+          ><span>波の高さ</span><output id="wave-out">1.0</output></label
+        ><input
+          id="wave"
+          type="range"
+          min="0.25"
+          max="1.5"
+          step="0.05"
+          value="1"
+        /><label for="wind"
+          ><span>風の強さ</span><output id="wind-out">0.8</output></label
+        ><input
+          id="wind"
+          type="range"
+          min="0"
+          max="1"
+          step="0.05"
+          value="0.8"
+        /><label for="light"
+          ><span>太陽の高さ</span><output id="light-out">50°</output></label
+        ><input id="light" type="range" min="2" max="55" step="1" value="50" />
+      </div>
+      <div class="panel-footer">
+        <button id="pause" aria-label="アニメーションを一時停止">
+          Ⅱ <span>一時停止</span></button
+        ><button id="reset" title="視点と設定をリセット">↺ リセット</button>
+      </div>
+    </section>
+    <footer class="hud">
+      <span>THREE.JS / GLSL</span>
+      <div>
+        <button id="quality" title="描画品質の切替（標準・高精細・軽量）">
+          標準</button
+        ><button id="fullscreen" title="全画面表示" aria-label="全画面表示">
+          ⛶
+        </button>
+      </div>
+    </footer>
+    <div id="loading">
+      <div class="loading-wave">〜</div>
+      <span>海を描いています</span>
+    </div>
+    <div id="error" hidden role="alert">
+      <h2>海を表示できませんでした</h2>
+      <p>
+        WebGL 2
+        が使えるブラウザで開き、ハードウェアアクセラレーションを有効にしてください。
+      </p>
+      <button onclick="location.reload()">もう一度試す</button>
+    </div>
+    <script
+      type="module"
+      src="./src/ocean.js"
+      onerror="
+        document.getElementById('loading').hidden = true;
+        document.getElementById('error').hidden = false;
+      "
+    ></script>
+  </body>
+</html>

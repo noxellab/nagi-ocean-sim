@@ -1,0 +1,25 @@
+{
+  "name": "nagi-ocean",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Three.js ocean with spectral waves, foam, refraction and HDR lighting.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": "^24.15.0 || >=26.0.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test --test-concurrency=1 tests/*.test.cjs tests/*.test.js",
+    "check": "npm test && npm run build"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "jsdom": "30.1.1",
+    "vite": "8.3.2"
+  }
+}
