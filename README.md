@@ -6,6 +6,8 @@
 
 Three.js / WebGL 2 の海シェーダー。3帯域のスペクトル波、泡、海底の屈折、HDR環境光を描画します。
 
+デモ：<https://noxelwork.com/nagi-ocean/>
+
 ### 起動
 
 Node.js 24.15以降の24.xを使用してください。
@@ -66,6 +68,8 @@ python tools/generate-sky.py path/to/sky.exr --output public
 ## English
 
 An ocean shader for Three.js / WebGL 2. It renders three-band spectral waves, foam, seabed refraction and HDR environment lighting.
+
+Demo: <https://noxelwork.com/nagi-ocean/>
 
 ### Getting started
 
